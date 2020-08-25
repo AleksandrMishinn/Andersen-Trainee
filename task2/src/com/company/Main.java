@@ -11,12 +11,12 @@ public class Main {
         TransportCommandPanel TCP = new TransportCommandPanel();
 
         for (int i = 0; i < 10; i++) {
-            if (!tractor.isEndOfFieldAhead()) {
+            if (!Movable.isEndOfFieldAhead(tractor)) {
                 TCP.executeCommand(tractor, Command.F);
                 System.out.println("Трактор переместился на координаты: " + tractor.position[0] + " : " + tractor.position[1]);
             } else {
                 TCP.executeCommand(tractor, Command.T);
-                System.out.println("Транспорт развернулся на " + tractor.orientation.toString());
+                System.out.println("Трактор развернулся на " + tractor.orientation.toString());
             }
         }
     }
