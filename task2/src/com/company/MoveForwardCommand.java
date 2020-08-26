@@ -1,11 +1,15 @@
 package com.company;
 
-import java.util.Arrays;
+public class MoveForwardCommand extends Command{
 
-public interface Movable {
+    public MoveForwardCommand(CommandPanel commandPanel) {
+        super(commandPanel);
+    }
 
-    static void moveForwards(Transport transport) {
+    @Override
+    public boolean execute() {
 
+        Transport transport = commandPanel.transport;
         int[] currentPosition = transport.position;
 
         transport.position = switch (transport.orientation) {
@@ -15,25 +19,19 @@ public interface Movable {
             case WEST -> new int[]{currentPosition[0] - 1, currentPosition[1]};
         };
 
-    }
-
-    static boolean isEndOfFieldAhead(Transport transport) {
-
-        int[] oldPosition = Arrays.copyOf(transport.position, transport.position.length);
-        boolean result = false;
-
-        moveForwards(transport);
-
         int[] fieldsSize = transport.field.getSize();
         int NumberOfDirections = fieldsSize.length;
 
         for (int i = 0; i < NumberOfDirections; i++) {
             if (fieldsSize[i] < transport.position[i]) {
-                result = true;
-                break;
+                return false;
             }
         }
-        transport.position = oldPosition;
-        return result;
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "MoveForwardCommand{}";
     }
 }

@@ -7,7 +7,7 @@ package com.company;
  * могут быть добавлены как новые команды для трактора (новые способы движения, вращения), так и новые "фигуры", которые
  * могут двигатся совершенно в другой системе координат.
  */
-public class Tractor extends Transport implements Movable, Rotary{
+public class Tractor extends Transport {
 
     public Tractor(int[] position, Field field, Orientation orientation) {
         super(position, field, orientation);

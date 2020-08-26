@@ -1,5 +1,12 @@
 package com.company;
 
-public enum Command {
-    F, T
+public abstract class Command {
+
+    public CommandPanel commandPanel;
+
+    public Command(CommandPanel commandPanel) {
+        this.commandPanel = commandPanel;
+    }
+
+    public abstract boolean execute();
 }
