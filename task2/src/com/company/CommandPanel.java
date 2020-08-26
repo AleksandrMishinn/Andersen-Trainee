@@ -34,7 +34,7 @@ public class CommandPanel {
 
     public void executeCommand(Command command) throws EndOfFieldException {
         if(command.execute()){
-            System.out.println("Success execute command " + command.toString());
+            System.out.println(command.toString());
         } else {
             throw new EndOfFieldException();
         }

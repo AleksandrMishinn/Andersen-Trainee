@@ -7,26 +7,19 @@ public class MoveForwardCommand extends Command{
     }
 
     public MoveForwardCommand() {
-
     }
 
     @Override
     public boolean execute() {
 
-        int[] currentPosition = transport.position;
-
-        transport.position = switch (transport.orientation) {
-            case NORTH -> new int[]{currentPosition[0], currentPosition[1] + 1};
-            case EAST -> new int[]{currentPosition[0] + 1, currentPosition[1]};
-            case SOUTH -> new int[]{currentPosition[0], currentPosition[1] - 1};
-            case WEST -> new int[]{currentPosition[0] - 1, currentPosition[1]};
-        };
+        int[] axisValue = transport.orientation.getAxisValue();
+        transport.position = new int[] {transport.position[0] + axisValue[0], transport.position[1] + axisValue[1]};
 
         int[] fieldsSize = transport.field.getSize();
         int NumberOfDirections = fieldsSize.length;
 
         for (int i = 0; i < NumberOfDirections; i++) {
-            if (fieldsSize[i] < transport.position[i]) {
+            if (fieldsSize[i] < transport.position[i] || transport.position[i] < 0) {
                 return false;
             }
         }
@@ -35,6 +28,6 @@ public class MoveForwardCommand extends Command{
 
     @Override
     public String toString() {
-        return "MoveForwardCommand{}";
+        return "Транспорт переместился на координаты " + transport.position[0] + " : " + transport.position[1];
     }
 }

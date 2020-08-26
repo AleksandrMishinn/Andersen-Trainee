@@ -4,15 +4,6 @@ public class TurnDirectionCommand extends Command {
 
     private boolean clockwise;
 
-    public TurnDirectionCommand(Transport transport) {
-        super(transport);
-    }
-
-    public TurnDirectionCommand(Transport transport, boolean clockwise) {
-        super(transport);
-        this.clockwise = clockwise;
-    }
-
     public TurnDirectionCommand(boolean clockwise) {
         this.clockwise = clockwise;
     }
@@ -27,6 +18,6 @@ public class TurnDirectionCommand extends Command {
 
     @Override
     public String toString() {
-        return "TurnDirectionCommand{}";
+        return "Транспорт развернулся на " + transport.orientation.getTitle();
     }
 }

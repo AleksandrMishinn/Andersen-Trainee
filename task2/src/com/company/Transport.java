@@ -7,7 +7,7 @@ public class Transport {
     protected int[] position;
 
     public Transport() {
-        this(new int[]{0}, new Field(new int[]{5}), Orientation.NORTH);
+        this(new int[]{0,0}, new Field(new int[]{5,5}), Orientation.NORTH);
     }
 
     public Transport(int[] position, Field field, Orientation orientation) {

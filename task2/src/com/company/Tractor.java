@@ -9,12 +9,4 @@ package com.company;
  */
 public class Tractor extends Transport {
 
-    public Tractor(int[] position, Field field, Orientation orientation) {
-        super(position, field, orientation);
-    }
-
-    public Tractor() {
-        this(new int[]{0, 0}, new Field(new int[]{5, 5}), Orientation.NORTH);
-    }
-
 }
