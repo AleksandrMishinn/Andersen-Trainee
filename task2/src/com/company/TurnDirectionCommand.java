@@ -4,20 +4,24 @@ public class TurnDirectionCommand extends Command {
 
     private boolean clockwise;
 
-    public TurnDirectionCommand(CommandPanel commandPanel) {
-        super(commandPanel);
+    public TurnDirectionCommand(Transport transport) {
+        super(transport);
     }
 
-    public TurnDirectionCommand(CommandPanel commandPanel, boolean clockwise) {
-        super(commandPanel);
+    public TurnDirectionCommand(Transport transport, boolean clockwise) {
+        super(transport);
+        this.clockwise = clockwise;
+    }
+
+    public TurnDirectionCommand(boolean clockwise) {
         this.clockwise = clockwise;
     }
 
     @Override
     public boolean execute() {
-        commandPanel.transport.orientation = clockwise ?
-                Orientation.next(commandPanel.transport.orientation) :
-                Orientation.previous(commandPanel.transport.orientation);
+        transport.orientation = clockwise ?
+                Orientation.next(transport.orientation) :
+                Orientation.previous(transport.orientation);
         return true;
     }
 

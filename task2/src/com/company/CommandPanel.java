@@ -12,8 +12,7 @@ public class CommandPanel {
 
     public void init(){
 
-        System.out.println("Введите M, TR, TL или exit");
-
+        System.out.println("Введите команду или exit");
         Scanner scanner = new Scanner(System.in);
 
         while (true){
@@ -23,31 +22,14 @@ public class CommandPanel {
                 break;
             }
 
-            Command currentCommand = convertStringToCommand(currentString);
-
             try {
-                executeCommand(currentCommand);
+                Command command = CommandFactory.getCommand(currentString);
+                command.transport = transport;
+                executeCommand(command);
             } catch (EndOfFieldException e) {
                 e.printStackTrace();
             }
-
         }
-    }
-
-    private Command convertStringToCommand(String commandName){
-        if (commandName.equalsIgnoreCase("M")){
-            return new MoveForwardCommand(this);
-        }
-
-        if (commandName.equalsIgnoreCase("TR")){
-            return new TurnDirectionCommand(this, true);
-        }
-
-        if (commandName.equalsIgnoreCase("TL")){
-            return new TurnDirectionCommand(this, false);
-        }
-
-        return new MoveForwardCommand(this);
     }
 
     public void executeCommand(Command command) throws EndOfFieldException {

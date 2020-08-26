@@ -2,14 +2,17 @@ package com.company;
 
 public class MoveForwardCommand extends Command{
 
-    public MoveForwardCommand(CommandPanel commandPanel) {
-        super(commandPanel);
+    public MoveForwardCommand(Transport transport) {
+        super(transport);
+    }
+
+    public MoveForwardCommand() {
+
     }
 
     @Override
     public boolean execute() {
 
-        Transport transport = commandPanel.transport;
         int[] currentPosition = transport.position;
 
         transport.position = switch (transport.orientation) {
