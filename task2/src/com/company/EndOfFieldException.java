@@ -1,4 +1,4 @@
 package com.company;
 
-public class EndOfFieldException extends Exception {
+public class EndOfFieldException extends CommandExecuteException {
 }

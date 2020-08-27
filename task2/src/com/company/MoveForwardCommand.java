@@ -1,33 +1,27 @@
 package com.company;
 
-public class MoveForwardCommand extends Command{
-
-    public MoveForwardCommand(Transport transport) {
-        super(transport);
-    }
-
-    public MoveForwardCommand() {
-    }
+public class MoveForwardCommand extends Command {
 
     @Override
-    public boolean execute() {
+    public boolean execute() throws EndOfFieldException {
 
-        int[] axisValue = transport.orientation.getAxisValue();
-        transport.position = new int[] {transport.position[0] + axisValue[0], transport.position[1] + axisValue[1]};
+        Figure figure = this.getFigure();
 
-        int[] fieldsSize = transport.field.getSize();
-        int NumberOfDirections = fieldsSize.length;
+        figure.getPosition().setX(figure.getPosition().getX() + figure.getOrientation().getXValue());
+        figure.getPosition().setY(figure.getPosition().getY() + figure.getOrientation().getYValue());
 
-        for (int i = 0; i < NumberOfDirections; i++) {
-            if (fieldsSize[i] < transport.position[i] || transport.position[i] < 0) {
-                return false;
-            }
+        if (figure.getField().getX() < figure.getPosition().getX() ||
+                figure.getField().getY() < figure.getPosition().getY() ||
+                figure.getPosition().getX() < 0 ||
+                figure.getPosition().getY() < 0) {
+            throw new EndOfFieldException();
         }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Транспорт переместился на координаты " + transport.position[0] + " : " + transport.position[1];
+        return " переместился на координаты " +
+                getFigure().getPosition().getX() + " : " + getFigure().getPosition().getY();
     }
 }

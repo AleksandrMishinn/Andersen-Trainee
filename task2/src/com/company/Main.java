@@ -7,8 +7,12 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        Transport tractor = new Tractor();
-        CommandPanel panel = new CommandPanel(tractor);
+//        Figure tractor = new Tractor();
+//        CommandPanel panel = new CommandPanel(tractor);
+//        panel.init();
+
+        Figure stone = new Stone();
+        CommandPanel panel = new CommandPanel(stone);
         panel.init();
 
     }

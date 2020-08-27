@@ -2,14 +2,15 @@ package com.company;
 
 public abstract class Command {
 
-    public Transport transport;
+    private Figure figure;
 
-    public Command(Transport transport) {
-        this.transport = transport;
+    public Figure getFigure() {
+        return figure;
     }
 
-    public Command() {
+    public void setFigure(Figure figure) {
+        this.figure = figure;
     }
 
-    public abstract boolean execute();
+    public abstract boolean execute() throws EndOfFieldException;
 }

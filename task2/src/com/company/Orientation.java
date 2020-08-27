@@ -2,46 +2,76 @@ package com.company;
 
 public enum Orientation {
 
-    NORTH("север", new int[]{0, 1}, "EAST", "WEST"),
-    EAST("восток", new int[]{1, 0}, "SOUTH", "NORTH"),
-    SOUTH("юг", new int[]{0, -1}, "WEST", "EAST"),
-    WEST("запад", new int[]{-1, 0}, "NORTH", "SOUTH");
+    NORTH("север", 0, 1) {
+        @Override
+        Orientation next() {
+            return EAST;
+        }
+
+        @Override
+        Orientation previous() {
+            return WEST;
+        }
+    },
+    EAST("восток", 1, 0) {
+        @Override
+        Orientation next() {
+            return SOUTH;
+        }
+
+        @Override
+        Orientation previous() {
+            return NORTH;
+        }
+    },
+    SOUTH("юг", 0, -1) {
+        @Override
+        Orientation next() {
+            return WEST;
+        }
+
+        @Override
+        Orientation previous() {
+            return EAST;
+        }
+    },
+    WEST("запад", -1, 0) {
+        @Override
+        Orientation next() {
+            return NORTH;
+        }
+
+        @Override
+        Orientation previous() {
+            return SOUTH;
+        }
+    };
 
     private String title;
-    private int[] axisValue;
-    private String nextDirection;
-    private String previousDirection;
+    private int XValue;
+    private int YValue;
 
-    Orientation(String title, int[] axisValue, String nextDirection, String previousDirection) {
+    Orientation(String title, int XValue, int YValue) {
         this.title = title;
-        this.axisValue = axisValue;
-        this.nextDirection = nextDirection;
-        this.previousDirection = previousDirection;
-    }
-
-    public int[] getAxisValue() {
-        return axisValue;
+        this.XValue = XValue;
+        this.YValue = YValue;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getNextDirection() {
-        return nextDirection;
+    public int getXValue() {
+        return XValue;
     }
 
-    public String getPreviousDirection() {
-        return previousDirection;
+    public int getYValue() {
+        return YValue;
     }
 
-    public static Orientation next(Orientation currentOrientation) {
-        return Orientation.valueOf(currentOrientation.getNextDirection());
-    }
+    abstract Orientation next();
 
-    public static Orientation previous(Orientation currentOrientation) {
-        return Orientation.valueOf(currentOrientation.getPreviousDirection());
-    }
+    abstract Orientation previous();
 
     @Override
     public String toString() {

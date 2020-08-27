@@ -1,19 +1,12 @@
 package com.company;
 
-public class Transport {
+public class Transport extends Figure {
 
-    protected Orientation orientation;
-    protected Field field;
-    protected int[] position;
+    public Transport(Position position, Field field, Orientation orientation, CommandFactory factory) {
+        super(position, field, orientation, factory);
+    }
 
     public Transport() {
-        this(new int[]{0,0}, new Field(new int[]{5,5}), Orientation.NORTH);
+        this(new Position(0, 0), new Field(5, 5), Orientation.NORTH, new TransportCommandFactory());
     }
-
-    public Transport(int[] position, Field field, Orientation orientation) {
-        this.position = position;
-        this.field = field;
-        this.orientation = orientation;
-    }
-
 }

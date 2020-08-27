@@ -1,8 +1,8 @@
 package com.company;
 
-public class Tractor extends Transport {
+public class Stone extends NaturalObjects {
     @Override
     public String toString() {
-        return "Трактор";
+        return "Камень";
     }
 }
