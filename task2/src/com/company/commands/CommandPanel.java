@@ -1,4 +1,10 @@
-package com.company;
+package com.company.commands;
+
+import com.company.commands.commands.Command;
+import com.company.commands.exceptions.CommandExecuteException;
+import com.company.commands.exceptions.CommandNotFoundException;
+import com.company.commands.factories.CommandFactory;
+import com.company.entities.Figure;
 
 import java.util.Scanner;
 

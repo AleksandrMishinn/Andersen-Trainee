@@ -1,4 +1,11 @@
-package com.company;
+package com.company.entities.natural;
+
+import com.company.commands.factories.CommandFactory;
+import com.company.commands.factories.NatureCommandFactory;
+import com.company.entities.Field;
+import com.company.entities.Figure;
+import com.company.entities.Orientation;
+import com.company.entities.Position;
 
 public class NaturalObjects extends Figure {
 

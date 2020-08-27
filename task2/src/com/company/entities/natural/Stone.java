@@ -1,4 +1,4 @@
-package com.company;
+package com.company.entities.natural;
 
 public class Stone extends NaturalObjects {
     @Override

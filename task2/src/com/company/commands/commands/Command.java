@@ -1,8 +1,11 @@
-package com.company;
+package com.company.commands.commands;
+
+import com.company.entities.Figure;
+import com.company.commands.exceptions.EndOfFieldException;
 
 public abstract class Command {
 
-    private Figure figure;
+    protected Figure figure;
 
     public Figure getFigure() {
         return figure;

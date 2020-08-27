@@ -1,11 +1,14 @@
-package com.company;
+package com.company.commands.commands;
+
+import com.company.entities.Figure;
+import com.company.commands.exceptions.EndOfFieldException;
 
 public class MoveForwardCommand extends Command {
 
     @Override
     public boolean execute() throws EndOfFieldException {
 
-        Figure figure = this.getFigure();
+        Figure figure = super.getFigure();
 
         figure.getPosition().setX(figure.getPosition().getX() + figure.getOrientation().getXValue());
         figure.getPosition().setY(figure.getPosition().getY() + figure.getOrientation().getYValue());
@@ -22,6 +25,6 @@ public class MoveForwardCommand extends Command {
     @Override
     public String toString() {
         return " переместился на координаты " +
-                getFigure().getPosition().getX() + " : " + getFigure().getPosition().getY();
+                super.getFigure().getPosition().getX() + " : " + super.getFigure().getPosition().getY();
     }
 }

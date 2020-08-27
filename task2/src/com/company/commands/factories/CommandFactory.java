@@ -1,4 +1,7 @@
-package com.company;
+package com.company.commands.factories;
+
+import com.company.commands.commands.Command;
+import com.company.commands.exceptions.CommandNotFoundException;
 
 import java.util.HashMap;
 import java.util.Map;

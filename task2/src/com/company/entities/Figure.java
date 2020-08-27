@@ -1,4 +1,6 @@
-package com.company;
+package com.company.entities;
+
+import com.company.commands.factories.CommandFactory;
 
 public class Figure {
 

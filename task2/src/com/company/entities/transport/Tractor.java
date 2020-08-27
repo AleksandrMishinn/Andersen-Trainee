@@ -1,4 +1,4 @@
-package com.company;
+package com.company.entities.transport;
 
 public class Tractor extends Transport {
     @Override

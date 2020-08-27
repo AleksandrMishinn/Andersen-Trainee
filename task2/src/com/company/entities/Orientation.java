@@ -1,48 +1,48 @@
-package com.company;
+package com.company.entities;
 
 public enum Orientation {
 
     NORTH("север", 0, 1) {
         @Override
-        Orientation next() {
+        public Orientation next() {
             return EAST;
         }
 
         @Override
-        Orientation previous() {
+        public Orientation previous() {
             return WEST;
         }
     },
     EAST("восток", 1, 0) {
         @Override
-        Orientation next() {
+        public Orientation next() {
             return SOUTH;
         }
 
         @Override
-        Orientation previous() {
+        public Orientation previous() {
             return NORTH;
         }
     },
     SOUTH("юг", 0, -1) {
         @Override
-        Orientation next() {
+        public Orientation next() {
             return WEST;
         }
 
         @Override
-        Orientation previous() {
+        public Orientation previous() {
             return EAST;
         }
     },
     WEST("запад", -1, 0) {
         @Override
-        Orientation next() {
+        public Orientation next() {
             return NORTH;
         }
 
         @Override
-        Orientation previous() {
+        public Orientation previous() {
             return SOUTH;
         }
     };
@@ -69,9 +69,9 @@ public enum Orientation {
         return YValue;
     }
 
-    abstract Orientation next();
+    public abstract Orientation next();
 
-    abstract Orientation previous();
+    public abstract Orientation previous();
 
     @Override
     public String toString() {

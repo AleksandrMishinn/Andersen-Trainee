@@ -1,4 +1,8 @@
-package com.company;
+package com.company.commands.factories;
+
+import com.company.commands.commands.MoveForwardCommand;
+import com.company.commands.commands.TurnLeftCommand;
+import com.company.commands.commands.TurnRightCommand;
 
 public class TransportCommandFactory extends CommandFactory {
     {
