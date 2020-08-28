@@ -4,6 +4,9 @@ import com.company.commands.CommandPanel;
 import com.company.entities.Figure;
 import com.company.entities.transport.Tractor;
 
+import java.util.Collections;
+import java.util.List;
+
 public class Main {
 
     /**
@@ -18,6 +21,7 @@ public class Main {
 //        Figure stone = new Stone();
 //        CommandPanel panel = new CommandPanel(stone);
 //        panel.init();
+
 
     }
 }
