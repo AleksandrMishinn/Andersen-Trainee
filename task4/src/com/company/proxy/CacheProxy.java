@@ -9,11 +9,12 @@ import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
 
 public class CacheProxy implements InvocationHandler {
 
     private final Map<String, Method> methods = new HashMap<>();
-    private final Map<String, Object> cacheStore = new ConcurrentHashMap<>();
+    private final Map<MethodPair, Object> cacheStore = new ConcurrentHashMap<>();
     private Object target;
 
     public CacheProxy(Object target) {
@@ -24,7 +25,7 @@ public class CacheProxy implements InvocationHandler {
         }
     }
 
-    public synchronized Object init() {
+    public Object init() {
         ClassLoader classLoader = target.getClass().getClassLoader();
         Class<?>[] interfaces = target.getClass().getInterfaces();
 
@@ -44,14 +45,26 @@ public class CacheProxy implements InvocationHandler {
             return currentMethod.invoke(target, args);
         }
 
-        Object resultFromCache = cacheStore.get(methodsName);
+        MethodPair pair = new MethodPair(methodsName, args);
 
-        if (resultFromCache != null) {
-            return resultFromCache;
-        }
+        cacheStore.computeIfAbsent(pair, value -> {
+            try {
+                return currentMethod.invoke(target, args);
+            } catch (IllegalAccessException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
+            return null;
+        });
 
-        Object result = currentMethod.invoke(target, args);
-        cacheStore.put(methodsName, result);
-        return result;
+        return cacheStore.get(pair);
+
+//        if (cacheStore.containsKey(pair)) {
+//            return cacheStore.get(pair);
+//        }
+//
+//        Object result = currentMethod.invoke(target, args);
+//        cacheStore.put(pair, result);
+
+//        return result;
     }
 }
