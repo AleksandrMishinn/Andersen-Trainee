@@ -9,7 +9,6 @@ import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
 
 public class CacheProxy implements InvocationHandler {
 
@@ -57,14 +56,5 @@ public class CacheProxy implements InvocationHandler {
         });
 
         return cacheStore.get(pair);
-
-//        if (cacheStore.containsKey(pair)) {
-//            return cacheStore.get(pair);
-//        }
-//
-//        Object result = currentMethod.invoke(target, args);
-//        cacheStore.put(pair, result);
-
-//        return result;
     }
 }

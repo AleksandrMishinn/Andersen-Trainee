@@ -3,9 +3,6 @@ package com.company;
 import com.company.proxy.CacheProxy;
 import com.company.service.HardCalculationService;
 import com.company.service.Service;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.logging.Logger;
 
 /**
